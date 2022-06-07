@@ -1,0 +1,46 @@
+nomor 1.
+
+create table projects(
+	proj_id serial primary key,
+	proj_name varchar(100),
+	proj_createdon date,
+	proj_duedate date,
+	proj_cust_name varchar (100)
+);
+create table project_assignment(
+	pras_proj_id integer,
+	pras_employed_id integer,
+	pras_startdate date,
+	pras_enddate date,
+	pras_status varchar (15)
+);
+
+ALTER TABLE project_assignment
+  ADD PRIMARY KEY (pras_proj_id,pras_employed_id);
+
+
+Nomor 2.
+
+alter table projects add column proj_description varchar(255);
+alter table projects add column proj_status varchar(15);
+alter table projects add column proj_amount integer;
+
+nomor 3.
+alter table projects add column proj_account_mgr integer;
+alter table projects add column employee_id integer;
+alter table projects add constraint employee_id_fk foreign key(employee_id)references employees(employee_id);
+
+nomor 4.
+insert into projects (proj_name, proj_createdon, proj_duedate, proj_cust_name) values ('E-COMMERCE', now(), now()+interval '3 month', 'TELKOMSEL');
+insert into projects (proj_name, proj_createdon, proj_duedate, proj_cust_name) values ('TRAVELOKA', now(), now()+interval '3 month', 'XL');
+insert into projects (proj_name, proj_createdon, proj_duedate, proj_cust_name) values ('TIKET.COM', now(), now()+interval '3 month', 'INDOSAT');
+
+nomor 5.
+insert into project_assignment (pras_proj_id, pras_employed_id, pras_startdate, pras_enddate, pras_status) values (1, 104, now(), null, 'ASSIGNED');
+insert into project_assignment (pras_proj_id, pras_employed_id, pras_startdate, pras_enddate, pras_status) values (1, 105, now(), now()+interval '3 day', 'COMPLETED');
+insert into project_assignment (pras_proj_id, pras_employed_id, pras_startdate, pras_enddate, pras_status) values (1, 106, now(), null, 'INPROGRESS');
+insert into project_assignment (pras_proj_id, pras_employed_id, pras_startdate, pras_enddate, pras_status) values (2, 104, now(), null, 'ASSIGNED');
+insert into project_assignment (pras_proj_id, pras_employed_id, pras_startdate, pras_enddate, pras_status) values (2, 105, now(), now()+interval '3 day', 'COMPLETED');
+insert into project_assignment (pras_proj_id, pras_employed_id, pras_startdate, pras_enddate, pras_status) values (2, 106, now(), now()+interval '3 day', 'INPROGRESS');
+
+nomor 6.
