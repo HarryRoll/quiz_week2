@@ -1,0 +1,73 @@
+nomor 1
+
+select a.region_id,a.region_name,b.country_id, b.country_name from regions a join countries b on a.region_id = b.region_id 
+where region_name like 'Eu%'
+
+nomor 2
+
+select count (*) total_countries, region_id, region_name from regions 
+inner join countries using(region_id)
+group by region_id
+
+nomor 3
+
+Select * from regions
+inner join countries using(region_id)
+inner join locations using(country_id)
+where region_name = 'Europe'
+
+nomor 4
+
+select department_id, department_name, location_id from departments 
+inner join locations using(location_id)
+inner join countries using(country_id)
+inner join regions using(region_id)
+where region_name = 'Americas'
+
+nomor 5
+
+select count (*)total_department, region_name from departments
+inner join locations using(location_id)
+inner join countries using(country_id)
+inner join regions using(region_id)
+group by region_name
+
+nomor 6
+
+select count (*)total_department, country_name from departments
+inner join locations using(location_id)
+inner join countries using(country_id)
+group by country_name
+
+nomor 7
+
+SELECT country_name, count(department_id) as Total_department 
+FROM departments
+inner join locations using(location_id)
+inner join countries using(country_id)
+group by country_name
+order by country_name desc limit 1
+
+nomor 8.
+
+select count(*)Total_emps, department_id from employees
+inner join departments using (department_id)
+group by employee_id
+order by department_id asc
+
+nomor 9.
+
+select count (*)total_employees, department_name, department_id, region_name from employees
+inner join departments using (department_id)
+inner join locations using(location_id)
+inner join countries using(country_id)
+inner join regions using(region_id)
+where region_name = 'Americas'
+group by department_name, department_id, region_name
+order by total_employees asc
+
+
+
+
+
+
